@@ -1,0 +1,113 @@
+CREATE TABLE planets(
+    id SERIAL PRIMARY KEY ,
+    name_of_planets VARCHAR(50) NOT NULL,
+    description VARCHAR(50) NOT NULL
+);
+SELECT * FROM planets;
+CREATE  TABLE satellites(
+    id SERIAL PRIMARY KEY ,
+    full_name VARCHAR(70) NOT NULL ,
+    date_of_discover DATE,
+    planets_id INTEGER REFERENCES planets(id)
+
+
+);
+SELECT * FROM planets;
+
+INSERT INTO planets(name_of_planets, size) VALUES
+    ('Jupiter','great red planet'),
+    ('Saturn','giant planet'),
+    ('Earth','green planet'),
+    ('Mars','garlic planet');
+
+INSERT INTO satellites(full_name, date_of_discover, planets_id)
+VALUES ('Moon',1856-4-15,3),
+      ('Calista',1956-7-17,1),
+      ('Titan',1993-3-21,2);
+SELECT * FROM satellites;
+ALTER TABLE satellites ADD  size INTEGER;
+ALTER TABLE satellites ADD CONSTRAINT size UNIQUE (size);
+ALTER TABLE  satellites RENAME full_name TO name;
+INSERT INTO satellites(size) VALUES (450),(500),(700);
+SELECT * FROM satellites;
+UPDATE satellites SET
+name='Umbriel',date_of_discover = 1786-12-1,planets_id=4,size=800
+WHERE id=1;
+SELECT * FROM satellites;
+
+DELETE FROM planets
+WHERE description = 'garlic planet';
+COMMIT ;
+
+CREATE  TABLE authors(
+    id SERIAL PRIMARY KEY ,
+    full_name VARCHAR(50) NOT NULL
+);
+CREATE TABLE books(
+    id SERIAL PRIMARY KEY ,
+    name_book VARCHAR(80) NOT NULL,
+    author_id INT REFERENCES authors(id)
+);
+INSERT INTO authors(full_name)
+VALUES ('Robert Kiosaki'),
+ ('Chyngyz Aitmatov'),
+ ('Agata Christi');
+INSERT INTO books(name_book,author_id)
+VALUES ('Rich dad poor dad',1),
+    ('Toolor kulaganda',2),
+    ('Puoaro',3),
+    ('Ak keme',2);
+ALTER TABLE authors ADD age INT;
+ALTER  TABLE authors ADD CONSTRAINT age UNIQUE (age);
+INSERT INTO authors(age)VALUES
+   (80),
+   (96),
+   (46);
+SELECT * FROM authors;
+
+CREATE TABLE teams(
+    id SERIAL PRIMARY KEY ,
+    team_name VARCHAR (80) NOT NULL
+
+
+);
+INSERT INTO teams(team_name)VALUES
+ ('Barcelona'),
+ ('Real Madrid');
+CREATE TABLE footballers(
+    id SERIAL PRIMARY KEY ,
+    full_name VARCHAR(70) NOT NULL,
+    age INT NOT NULL ,
+    country VARCHAR(70) NOT NULL,
+    team_id INTEGER REFERENCES teams (id)
+
+
+);
+INSERT INTO footballers(full_name, age, country, team_id) VALUES
+   ('Messi',32,'Italy',1),
+   ('Mbape',19,'Japan',2),
+   ('Modric',38,'Italy',1);
+ALTER TABLE footballers ADD gender VARCHAR(50);
+ALTER TABLE footballers RENAME full_name TO name;
+SELECT  * FROM footballers;
+SELECT  * FROM teams;
+
+CREATE  TABLE restaurants(
+    id SERIAL PRIMARY KEY ,
+    name_of_restaurant VARCHAR NOT NULL
+);
+CREATE TABLE kitchen(
+    id SERIAL PRIMARY KEY ,
+    type_kitchen VARCHAR(80) NOT NULL ,
+    address VARCHAR (80) NOT NULL ,
+    id_restaurants INT REFERENCES restaurants(id));
+INSERT INTO restaurants(name_of_restaurant)VALUES
+     ('Small Japan'),
+     ('Ala Too'),
+     ('Marash');
+SELECT  * FROM restaurants;
+INSERT INTO kitchen( type_kitchen, address, id_restaurants) VALUES
+          ('Japanese','Razakov 45',1),
+          ('Turkish',' Jdal 145',3),
+          ('Kyrgyz','Chui 120',20);
+SELECT * FROM kitchen;

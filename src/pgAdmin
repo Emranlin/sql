@@ -1,0 +1,124 @@
+CREATE TABLE sports(
+id SERIAL PRIMARY KEY,
+name VARCHAR (50) NOT NULL);
+
+CREATE TABLE sportmen(
+id SERIAL PRIMARY KEY,
+name VARCHAR (50) NOT NULL,
+mass_body INTEGER NOT NULL,
+age INT NOT NULL,
+id_sports INT REFERENCES sports(id));
+
+INSERT INTO sports (name) VALUES
+('base ball'),
+('swimming'),
+('tennis'),
+('runing');
+SELECT * FROM sports;
+
+INSERT INTO sportsmen(name,mass_body,age,id_sports)VALUES
+('Kristina Kitti',56,24,1),
+('Pit Sampars',68,22,3),
+('Chari Hokins',52,28,4);
+
+ALTER TABLE sportmen RENAME mass_body TO weight;
+ALTER TABLE sportmen ADD country VARCHAR(50);
+INSERT INTO sportmen(country) VALUES
+('RUSSIA'),('GERMAN'),('ENGLAND');
+
+CREATE TABLE birds(
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+type VARCHAR (50)NOT NULL,
+country_of_living VARCHAR (50) NOT NULL);
+
+INSERT INTO birds(name,types,country_of_living)VALUES
+('EAGLE','WILD','KYRGYZSTAN'),
+('COLIBRI','SMALL BIRD','IRELAND');
+
+ALTER TABLE birds ADD age INTEGER;
+
+UPDATE birds SET name='PARADISE',
+type='PRETY',
+country_of_living 'DALAS',
+age='3' WHERE id=1;
+ALTER TABLE birds DROP country;
+SELECT * FROM birds;
+
+CREATE TABLE cars(
+id SERIAL PRIMARY KEY,
+model VARCHAR(100) NOT NULL,
+country_of_issue VARCHAR(100) NOT NULL,
+date_of_issue DATE);
+
+INSERT INTO cars (model,country_of_issue,date_of_issue) VALUES
+('CAMRY','JAPAN',2012-5-12),
+('HIGHLANDER','USA',2022-7-14),
+('LEXUXS ','KOREA',2023-8-12);
+
+SELECT * FROM cars;
+
+ALTER TABLE cars ADD volume INTEGER;
+
+ALTER TABLE cars RENAME country_of_issue TO country;
+
+SELECT * FROM cars;
+
+
+CREATE TABLE business_centers(
+id SERIAL PRIMARY KEY,
+name VARCHAR(80) NOT NULL,
+address VARCHAR(80) NOT NULL,
+type VARCHAR(80) NOT NULL);
+
+INSERT INTO (name,address,type)VALUES
+('DORDOI PLAZA','CHUISKIY','CLOTHES'),
+('BISHKEK PARK','KIEVSKIY','RECREATIONAL'),
+('OLOLO_HAUSE','K AKIEV','KOVORKING');
+
+ALTER TABLE business_center ADD work_hour VARCHAR;
+ALTER TABLE business_center MODIFY (work_hour VARCHAR(50));
+TRUNCATE TABLE business_center;
+SELECT * FROM business_center;
+
+CREATE TABLE kinder_garden(
+id SERIAL PRIMARY KEY,
+name VARCHAR(90) NOT NULL,
+address VARCHAR(90) NOT NULL);
+
+INSERT INTO (name,address) VALUES
+('Bal-Kyial',K.Akiev),
+('Effect','Baba-ata');
+UPDATE birds SET name='PARADISE',
+address='Kievskiy' WHERE id=1;
+
+SELECT * FROM kinder_garden;
+
+CREATE TABLE universities(
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+total_amount_students INTEGER);
+ INSERT INTO unversities(name,total_amount_students)VALUES
+ ('STANFORD','USA',5000),
+ ('CAMBRIGE','ENGLAND',7000);
+ SELECT* FROM universities;
+
+ ALTER TABLE universities ADD opening_year DATE;
+ AlTER TABLE universities MODIFY(opening_year DATE(uniqe));
+ ALTER TABLE universities DROP name;
+
+ CREATE TABLE clinics(
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(50)NOT NULL,
+ address VARCHAR(50)NOT NULL,
+ price INTEGER);
+
+ INSERT INTO clinics (name,address,price)VALUES
+ ('AVANGARD','AKIEVA',500),
+ ('TURKISH CLINIC','CHUI',700),
+ ('MEDlINE','KIEV',450);
+ SELECT * FROM clinics;
+
+ ALTER TABLE clinics ADD types VARCHAR(50);
+ ALTER TABLE clinics DROP price;
+ Select * FROM clinics;

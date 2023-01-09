@@ -1,0 +1,189 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (15.1)
+WARNING: Console code page (720) differs from Windows code page (1256)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# create database shell;
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# \sql
+invalid command \sql
+Try \? for help.
+postgres=# show databases;
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# create database homework;
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# use homework;
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# create table students(id serial primary key,name varchar(50),age integer;
+postgres(# insert into students(name,age)values(zhiidegul,29),(lira,38);
+postgres(# /d;
+postgres(# \h
+Available help:
+  ABORT                            CREATE USER MAPPING
+  ALTER AGGREGATE                  CREATE VIEW
+  ALTER COLLATION                  DEALLOCATE
+  ALTER CONVERSION                 DECLARE
+  ALTER DATABASE                   DELETE
+  ALTER DEFAULT PRIVILEGES         DISCARD
+  ALTER DOMAIN                     DO
+  ALTER EVENT TRIGGER              DROP ACCESS METHOD
+  ALTER EXTENSION                  DROP AGGREGATE
+  ALTER FOREIGN DATA WRAPPER       DROP CAST
+  ALTER FOREIGN TABLE              DROP COLLATION
+  ALTER FUNCTION                   DROP CONVERSION
+  ALTER GROUP                      DROP DATABASE
+  ALTER INDEX                      DROP DOMAIN
+  ALTER LANGUAGE                   DROP EVENT TRIGGER
+  ALTER LARGE OBJECT               DROP EXTENSION
+  ALTER MATERIALIZED VIEW          DROP FOREIGN DATA WRAPPER
+  ALTER OPERATOR                   DROP FOREIGN TABLE
+  ALTER OPERATOR CLASS             DROP FUNCTION
+  ALTER OPERATOR FAMILY            DROP GROUP
+  ALTER POLICY                     DROP INDEX
+  ALTER PROCEDURE                  DROP LANGUAGE
+  ALTER PUBLICATION                DROP MATERIALIZED VIEW
+  ALTER ROLE                       DROP OPERATOR
+  ALTER ROUTINE                    DROP OPERATOR CLASS
+  ALTER RULE                       DROP OPERATOR FAMILY
+  ALTER SCHEMA                     DROP OWNED
+  ALTER SEQUENCE                   DROP POLICY
+  ALTER SERVER                     DROP PROCEDURE
+  ALTER STATISTICS                 DROP PUBLICATION
+  ALTER SUBSCRIPTION               DROP ROLE
+  ALTER SYSTEM                     DROP ROUTINE
+  ALTER TABLE                      DROP RULE
+  ALTER TABLESPACE                 DROP SCHEMA
+  ALTER TEXT SEARCH CONFIGURATION  DROP SEQUENCE
+  ALTER TEXT SEARCH DICTIONARY     DROP SERVER
+  ALTER TEXT SEARCH PARSER         DROP STATISTICS
+  ALTER TEXT SEARCH TEMPLATE       DROP SUBSCRIPTION
+  ALTER TRIGGER                    DROP TABLE
+  ALTER TYPE                       DROP TABLESPACE
+  ALTER USER                       DROP TEXT SEARCH CONFIGURATION
+  ALTER USER MAPPING               DROP TEXT SEARCH DICTIONARY
+  ALTER VIEW                       DROP TEXT SEARCH PARSER
+  ANALYZE                          DROP TEXT SEARCH TEMPLATE
+  BEGIN                            DROP TRANSFORM
+  CALL                             DROP TRIGGER
+  CHECKPOINT                       DROP TYPE
+  CLOSE                            DROP USER
+  CLUSTER                          DROP USER MAPPING
+  COMMENT                          DROP VIEW
+  COMMIT                           END
+  COMMIT PREPARED                  EXECUTE
+  COPY                             EXPLAIN
+  CREATE ACCESS METHOD             FETCH
+  CREATE AGGREGATE                 GRANT
+  CREATE CAST                      IMPORT FOREIGN SCHEMA
+  CREATE COLLATION                 INSERT
+  CREATE CONVERSION                LISTEN
+  CREATE DATABASE                  LOAD
+-- More  -- Lines:
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]: postgres
+Password for user postgres:
+psql (15.1)
+WARNING: Console code page (720) differs from Windows code page (1256)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# CREATE TABLE person(id SERIAL PRIMARY KEY, name VARCHAR(50));
+CREATE TABLE
+postgres=# INSERT INTO person (name)VALUES('NURIK'),('Ilim');
+INSERT 0 2
+postgres=# SELECT * FROM person;
+ id | name
+----+-------
+  1 | NURIK
+  2 | Ilim
+(2 rows)
+
+
+postgres=# alter table person add last_name varchar(50);
+ALTER TABLE
+postgres=# insert into person(last_name)values('Zholdoshev'),('Shabdanbekov');
+INSERT 0 2
+postgres=# alter table person add age integer;
+ALTER TABLE
+postgres=# insert into (age) values(19),(18);
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# insert into person(age)values(19),(18);
+INSERT 0 2
+postgres=# select * from person;
+ id | name  |  last_name   | age
+----+-------+--------------+-----
+  1 | NURIK |              |
+  2 | Ilim  |              |
+  3 |       | Zholdoshev   |
+  4 |       | Shabdanbekov |
+  5 |       |              |  19
+  6 |       |              |  18
+(6 rows)
+
+
+postgres=# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50);
+postgres(# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50));
+postgres(# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50));
+postgres(# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50);
+postgres(# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50)));
+postgres(# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50)));
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# create table users(id serial primary key,full_name varchar(50),age integer,email varchar(50));
+CREATE TABLE
+postgres=# create table students(id serial primary key,full_name varchar(50),course varchar(50),date_of_birth date;
+postgres(# create table students(id serial primary key,full_name varchar(50),course varchar(50),date_of_birth date));
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# insert into students(full_name,course,date_of_birth)values('Zhalilova Zhiidegul','middle',1993-1-15),
+postgres-# insert into students(full_name,course,date_of_birth)values('Zhalilova Zhiidegul','middle',1993-1-15),('Nuriza','middle',2003-1-14);
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=# select * from students;
+ERROR:  character with byte sequence 0xd0 0x9e in encoding "UTF8" has no equivalent in encoding "WIN1256"
+postgres=#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
